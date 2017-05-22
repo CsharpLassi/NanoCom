@@ -8,6 +8,8 @@
 .extern print
 .extern main
 
+.extern wdtOn
+
 .text
 asmMain:
 	;Ram
@@ -16,6 +18,8 @@ asmMain:
 	ldi temp , lo8(RAMEND)
 	out SPL  , temp
 
+
+	rcall wdtOn
 	rcall Uart_Init
 
 	rcall main
@@ -25,4 +29,3 @@ loop:
 
 stdhandler:
 	reti
-
