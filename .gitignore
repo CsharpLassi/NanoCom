@@ -1,0 +1,9 @@
+#Files
+*~
+*.hex
+*.out
+*.map
+
+#Dir
+
+build/
