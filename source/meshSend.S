@@ -41,6 +41,3 @@ sendIRQCompare:
 sendIRQOverflow:
   rjmp sendIRQOverflow
   reti
-
-.data
-txtMessage: .asciz "TestInterrupt"

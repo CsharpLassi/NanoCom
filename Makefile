@@ -24,7 +24,7 @@ rebuild: all
 
 $(TARGET): $(BUILD)output.elf
 	avr-objdump -h -S -D "$(BUILD)output.elf" > "$(MAP)"
-	avr-objcopy --output-target=ihex $(BUILD)output.elf $@
+	avr-objcopy -R .data  --output-target=ihex $(BUILD)output.elf $@
 
 
 $(BUILD)output.elf : $(OBJECTS)
