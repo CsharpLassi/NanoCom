@@ -5,7 +5,7 @@
 
 uint8_t init(void)
 {
-	if(printI(15,10))
+	if(printI(15,16))
 		print("Error\r\n");
 
 	print("Hallo Welt\r\n");

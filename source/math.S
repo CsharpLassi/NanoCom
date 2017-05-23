@@ -2,7 +2,9 @@
 .include "register.S"
 
 .global __udivmodqi4
+.global division8
 
+division8:
 __udivmodqi4:
   i = p1L
   b = p2L
