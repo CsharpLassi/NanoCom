@@ -6,14 +6,14 @@
 
 .extern Uart_Init
 .extern print
-.extern main
+.extern init
 
 .extern wdtOn
 
 .extern sendInit
 .extern sendStart
 
-.text
+.section .init1
 asmMain:
 	;Ram
 	ldi temp , hi8(RAMEND)
@@ -31,7 +31,7 @@ asmMain:
 
 	rcall sendStart
 
-	rcall main
+	rcall init
 
 loop:
 	rjmp    loop

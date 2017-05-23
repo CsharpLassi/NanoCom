@@ -4,6 +4,7 @@
 .extern sendIRQOverflow
 
 .global IRQTable
+.section .init0
 IRQTable:
 ;Einstiegspunkt und Interrupt
 rjmp asmMain

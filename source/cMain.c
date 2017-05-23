@@ -3,7 +3,7 @@
 #include "stdint.h"
 #include "stdio.h"
 
-uint8_t main(void)
+uint8_t init(void)
 {
 	if(printI(15,10))
 		print("Error\r\n");

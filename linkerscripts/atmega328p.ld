@@ -1,15 +1,43 @@
+MEMORY
+{
+    ROM (rx) : ORIGIN = 0, LENGTH = 0x3FFF
+}
+
+MEMORY
+{
+    RAM (wr) : ORIGIN = 0, LENGTH = 0xFF
+}
+
 SECTIONS
 {
+  .init :
+  {
+    *(.init0)
+    *(.init1)
+  } > ROM
+  .text :
+  {
+    *(.text)
+  } > ROM
 
-    init :
-    {
-      build/irqvectors.o
-      build/main.o
-    }
-    .text :
-    {
-      *(.text)
-    }
-    .data : { *(.data) }
-    .bss : { *(.bss) }
+  .rodata :
+  {
+    *(.rodata)
+    *(.rodata.*)
+  } > ROM
+
+  .comment :
+  {
+    *(.comment)
+  }
+
+
+}
+
+SECTIONS
+{
+  .data :
+  {
+    *(.data)
+  } > RAM
 }
