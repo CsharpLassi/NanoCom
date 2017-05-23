@@ -1,5 +1,7 @@
 .extern main
 .extern stdhandler
+.extern sendIRQCompare
+.extern sendIRQOverflow
 
 .global IRQTable
 IRQTable:
@@ -18,9 +20,9 @@ rjmp stdhandler ;Timer1 CAPT
 rjmp stdhandler ;Timer1 CompA
 rjmp stdhandler ;Timer1 CompB
 rjmp stdhandler ;Timer1 OVF
-rjmp stdhandler ;Timer0 CompA
-rjmp stdhandler ;Timer0 CompB
-rjmp stdhandler ;Timer0 OVF
+rjmp sendIRQCompare ;Timer0 CompA
+rjmp sendIRQCompare ;Timer0 CompB
+rjmp sendIRQOverflow ;Timer0 OVF
 rjmp stdhandler ;SPI STC
 rjmp stdhandler ;USART, RX Complete
 rjmp stdhandler ;USART, Data Register Empty

@@ -9,3 +9,5 @@ temp2 = 17
 ;Parameter
 p1L = 24
 p1H = 25
+p2L = 22
+p2H = 23

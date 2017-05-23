@@ -12,6 +12,8 @@
 
 .global Uart_Init
 .global print
+.global printC
+.global printRam
 
 Uart_Init:
   push temp
@@ -27,7 +29,7 @@ Uart_Init:
   sts     UCSR0C, temp
 
   ldi	temp, (1 << TXEN0)
-  sts     UCSR0B,temp                  ; TX aktivieren
+  sts UCSR0B,temp                  ; TX aktivieren
   pop temp
   ret
 
@@ -36,15 +38,38 @@ print:
 	mov ZL, p1L
 	mov ZH, p1H
 print_1:
-    lpm p1L, Z+
-    tst p1L
-    breq print_end
-    rcall serout
-    rjmp print_1
+  lpm p1L, Z+
+  tst p1L
+  breq print_end
+  rcall serout
+  rjmp print_1
 print_end:
-    rcall sync
+  rcall sync
 	pop temp
-    ret
+  ret
+
+printRam:
+	push temp
+	mov ZL, p1L
+	mov ZH, p1H
+printRam_1:
+  ld p1L, Z+
+  tst p1L
+  breq printRam_end
+  rcall serout
+  rjmp printRam_1
+printRam_end:
+  rcall sync
+	pop temp
+  ret
+
+printC:
+  push temp
+
+  rcall serout
+
+  pop temp
+  ret
 
 serout:
     lds	    temp, UCSR0A

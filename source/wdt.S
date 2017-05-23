@@ -31,6 +31,7 @@ wdtOff:
   sts WDTCSR,temp
 
   out SREG, temp2
+  sei
 
   pop temp2
   pop temp

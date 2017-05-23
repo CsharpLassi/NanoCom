@@ -10,6 +10,9 @@
 
 .extern wdtOn
 
+.extern sendInit
+.extern sendStart
+
 .text
 asmMain:
 	;Ram
@@ -19,8 +22,14 @@ asmMain:
 	out SPL  , temp
 
 
-	rcall wdtOn
+	;rcall wdtOn
 	rcall Uart_Init
+
+	rcall sendInit
+
+	;SEI
+
+	rcall sendStart
 
 	rcall main
 
@@ -28,4 +37,5 @@ loop:
 	rjmp    loop
 
 stdhandler:
+	rjmp stdhandler
 	reti
