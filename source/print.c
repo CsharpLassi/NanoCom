@@ -3,7 +3,7 @@
 
 
 
-uint8_t OldprintI(uint8_t value,uint8_t base)
+uint8_t printI(uint8_t value,uint8_t base)
 {
 	char buf[8];
 	char* p;

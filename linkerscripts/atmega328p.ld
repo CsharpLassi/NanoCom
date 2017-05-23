@@ -7,13 +7,10 @@ MEMORY
 
 SECTIONS
 {
-  .init :
+  .text :
   {
     *(.init0)
     *(.init1)
-  } > ROM
-  .text :
-  {
     *(.text)
   } > ROM
 
@@ -26,7 +23,7 @@ SECTIONS
   .comment :
   {
     *(.comment)
-  }
+  } > ROM
 
 
 }

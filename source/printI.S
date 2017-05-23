@@ -1,7 +1,7 @@
 .include "m328Pdef.S"
 .include "register.S"
 
-.global printI
+
 
 .text
 printI:

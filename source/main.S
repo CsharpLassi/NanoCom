@@ -29,9 +29,14 @@ asmMain:
 
 	;SEI
 
+	ldi p1L, lo8(txtMessage)
+	ldi p1H, hi8(txtMessage)
+
+	rcall print
+
 	rcall sendStart
 
-	rcall init
+	;rcall init
 
 loop:
 	rjmp    loop
@@ -39,3 +44,6 @@ loop:
 stdhandler:
 	rjmp stdhandler
 	reti
+
+.section .rodata
+txtMessage: .asciz "Hallo Welt\r\n"

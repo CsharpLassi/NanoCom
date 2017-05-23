@@ -35,14 +35,17 @@ $(BUILD)output.elf : $(OBJECTS)
 $(BUILD)%.o: $(SOURCE)%.S $(BUILD)
 	@echo Building file: $<
 	avr-as -mmcu=$(MCU) -I "./def" -I "$(SOURCE)" -o $@ "$<"
+	avr-objdump -h -S -D $@ > $@.map
 
 $(BUILD)%.o: $(SOURCE)%.c $(BUILD)
 		@echo Building file: $<
 		avr-gcc -mmcu=$(MCU) -c -Wall -O3 -I "./source/include" -o $@ "$<"
+		avr-objdump -h -S -D $@ > $@.map
 
 $(BUILD)%.o: $(SOURCE)%.cpp $(BUILD)
 		@echo Building file: $<
 		avr-gcc -mmcu=$(MCU) -c -Wall -O3 -I "./source/include" -o $@ "$<"
+		avr-objdump -h -S -D $@ > $@.map
 
 
 $(BUILD):
