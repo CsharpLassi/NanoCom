@@ -5,12 +5,10 @@
 
 uint8_t init(void)
 {
-	if(printI(15,16))
-		print("Error\r\n");
 
-	print("Hallo Welt\r\n");
 
-	printf("Hallo ID:%d",5,3,2);
+	printf("Hallo ID:%d,%x\r\n",15,15);
+	//printf("Hallo ID:%d,%d,%d\r\n",15,30,20);
 	/*
 
 	print("Hallo Welt\r\n");

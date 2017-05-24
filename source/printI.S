@@ -3,7 +3,7 @@
 
 .global printI
 
-.extern printRam
+.extern printr
 .extern division8
 
 .text
@@ -38,7 +38,7 @@ printI_Loop:
 
   mov p1L, YL
   mov p1H, YH
-  rcall printRam
+  rcall printr
 
   rjmp printI_Ret_True
 

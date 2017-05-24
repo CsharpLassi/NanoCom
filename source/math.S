@@ -17,7 +17,7 @@ __udivmodqi4:
 
 __udivmodqi4_loop:
   cp i, b
-  BREQ __udivmodqi4_ret
+  ;BREQ __udivmodqi4_ret
   BRLO __udivmodqi4_ret
   inc temp
   sub i , b
