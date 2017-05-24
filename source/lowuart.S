@@ -15,6 +15,9 @@
 .global printC
 .global printRam
 
+.global sync
+.global serout
+
 Uart_Init:
   push temp
   ;Baudrate einstellen
@@ -33,41 +36,9 @@ Uart_Init:
   pop temp
   ret
 
-print:
-	push temp
-	mov ZL, p1L
-	mov ZH, p1H
-print_1:
-  lpm p1L, Z+
-  tst p1L
-  breq print_end
-  rcall serout
-  rjmp print_1
-print_end:
-  rcall sync
-	pop temp
-  ret
-
-printRam:
-	push temp
-	mov ZL, p1L
-	mov ZH, p1H
-printRam_1:
-  ld p1L, Z+
-  tst p1L
-  breq printRam_end
-  rcall serout
-  rjmp printRam_1
-printRam_end:
-  rcall sync
-	pop temp
-  ret
-
 printC:
   push temp
-
   rcall serout
-
   pop temp
   ret
 

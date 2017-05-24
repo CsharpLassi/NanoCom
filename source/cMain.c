@@ -9,6 +9,8 @@ uint8_t init(void)
 		print("Error\r\n");
 
 	print("Hallo Welt\r\n");
+
+	printf("Hallo ID:%d",5,3,2);
 	/*
 
 	print("Hallo Welt\r\n");
