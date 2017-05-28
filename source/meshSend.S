@@ -6,7 +6,6 @@
 .global sendIRQCompare
 .global sendIRQOverflow
 
-.extern print
 
 sendInit:
   push temp
@@ -35,9 +34,7 @@ sendStart:
   ret
 
 sendIRQCompare:
-  rjmp sendIRQCompare
   reti
 
 sendIRQOverflow:
-  rjmp sendIRQOverflow
   reti

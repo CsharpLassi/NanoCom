@@ -26,8 +26,8 @@ jmp sendIRQCompare ;Timer0 CompB
 jmp sendIRQOverflow ;Timer0 OVF
 jmp stdhandler ;SPI STC
 jmp UartReceiveInterrupt ;USART, RX Complete
-jmp UartReceiveInterrupt ;USART, Data Register Empty
-jmp UartReceiveInterrupt ;USART, TX Complete
+jmp stdhandler ;USART, Data Register Empty
+jmp stdhandler ;USART, TX Complete
 jmp stdhandler ;ADC Conversion Complete
 jmp stdhandler ;EEPROM Ready
 jmp stdhandler ;AnalogComperator

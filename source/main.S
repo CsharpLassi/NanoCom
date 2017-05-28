@@ -27,14 +27,14 @@ asmMain:
 
 	rcall sendInit
 
-	;SEI
+	;ldi temp, (1 << 7)
+	;out SREG, temp
 
-	;ldi p1L, lo8(txtMessage)
-	;ldi p1H, hi8(txtMessage)
+	SEI
 
-	;rcall print
+	;rcall USART_Receive
 
-	rcall sendStart
+	;rcall sendStart
 
 	rcall init
 
@@ -42,8 +42,6 @@ loop:
 	rjmp    loop
 
 stdhandler:
-	rjmp stdhandler
 	reti
 
 .section .rodata
-;txtMessage: .asciz "Hallo Welt\r\n"

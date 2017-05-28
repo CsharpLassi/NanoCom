@@ -11,15 +11,16 @@
 .endif
 
 .global Uart_Init
-.global print
 .global printC
-.global printRam
 
 .global sync
 .global serout
 
+.global UartReceiveInterrupt
+
 Uart_Init:
   push temp
+
   ;Baudrate einstellen
   ldi     temp, hi8(UBRR_VAL)
   sts	  UBRR0H, temp
@@ -31,8 +32,8 @@ Uart_Init:
   ldi     temp, (1<<UCSZ01)|(1<<UCSZ00)
   sts     UCSR0C, temp
 
-  ldi	temp, (1 << TXEN0)
-  sts UCSR0B,temp                  ; TX aktivieren
+  ldi	temp, (1 << TXEN0) | (1 << RXEN0) | (1 << RXCIE0) | (0 << TXCIE0)
+  sts UCSR0B,temp
   pop temp
   ret
 
@@ -63,3 +64,16 @@ sync_loop:
     dec     16
     brne    sync_1
     ret
+
+UartReceiveInterrupt:
+  push temp
+  in temp, SREG
+  push temp
+
+  lds temp, UDR0
+  sts UDR0, temp
+
+  pop temp
+  out SREG, temp
+  pop temp
+  reti

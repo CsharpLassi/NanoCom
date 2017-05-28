@@ -1,2 +1,2 @@
 #!/bin/bash
-picocom /dev/ttyACM0
+picocom --omap crcrlf /dev/ttyACM0 
