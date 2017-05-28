@@ -7,29 +7,29 @@
 .section .init0
 IRQTable:
 ;Einstiegspunkt und Interrupt
-rjmp asmMain
-rjmp stdhandler ;ExInt 0
-rjmp stdhandler ;ExInt 1
-rjmp stdhandler ;PinChange 0
-rjmp stdhandler ;PinChange 1
-rjmp stdhandler ;PinChange 2
-rjmp stdhandler ;WDT
-rjmp stdhandler ;Timer2 CompA
-rjmp stdhandler ;Timer2 CompB
-rjmp stdhandler ;Timer2 OVF
-rjmp stdhandler ;Timer1 CAPT
-rjmp stdhandler ;Timer1 CompA
-rjmp stdhandler ;Timer1 CompB
-rjmp stdhandler ;Timer1 OVF
-rjmp sendIRQCompare ;Timer0 CompA
-rjmp sendIRQCompare ;Timer0 CompB
-rjmp sendIRQOverflow ;Timer0 OVF
-rjmp stdhandler ;SPI STC
-rjmp stdhandler ;USART, RX Complete
-rjmp stdhandler ;USART, Data Register Empty
-rjmp stdhandler ;USART, TX Complete
-rjmp stdhandler ;ADC Conversion Complete
-rjmp stdhandler ;EEPROM Ready
-rjmp stdhandler ;AnalogComperator
-rjmp stdhandler ;2-wire Interface
-rjmp stdhandler ;Store Program Memory Ready
+jmp asmMain
+jmp stdhandler ;ExInt 0
+jmp stdhandler ;ExInt 1
+jmp stdhandler ;PinChange 0
+jmp stdhandler ;PinChange 1
+jmp stdhandler ;PinChange 2
+jmp stdhandler ;WDT
+jmp stdhandler ;Timer2 CompA
+jmp stdhandler ;Timer2 CompB
+jmp stdhandler ;Timer2 OVF
+jmp stdhandler ;Timer1 CAPT
+jmp stdhandler ;Timer1 CompA
+jmp stdhandler ;Timer1 CompB
+jmp stdhandler ;Timer1 OVF
+jmp sendIRQCompare ;Timer0 CompA
+jmp sendIRQCompare ;Timer0 CompB
+jmp sendIRQOverflow ;Timer0 OVF
+jmp stdhandler ;SPI STC
+jmp UartReceiveInterrupt ;USART, RX Complete
+jmp UartReceiveInterrupt ;USART, Data Register Empty
+jmp UartReceiveInterrupt ;USART, TX Complete
+jmp stdhandler ;ADC Conversion Complete
+jmp stdhandler ;EEPROM Ready
+jmp stdhandler ;AnalogComperator
+jmp stdhandler ;2-wire Interface
+jmp stdhandler ;Store Program Memory Ready
