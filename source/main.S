@@ -27,12 +27,7 @@ asmMain:
 
 	rcall sendInit
 
-	;SEI
-
-	;ldi p1L, lo8(txtMessage)
-	;ldi p1H, hi8(txtMessage)
-
-	;rcall print
+	SEI
 
 	rcall sendStart
 
@@ -46,4 +41,3 @@ stdhandler:
 	reti
 
 .section .rodata
-;txtMessage: .asciz "Hallo Welt\r\n"

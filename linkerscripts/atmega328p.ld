@@ -16,6 +16,7 @@ SECTIONS
 
   .rodata :
   {
+    *(.data)
     *(.rodata)
     *(.rodata.*)
   } > ROM

@@ -6,10 +6,14 @@
 .global sendIRQCompare
 .global sendIRQOverflow
 
-.extern print
+.global getTCNT0
+
 
 sendInit:
   push temp
+
+  clr temp
+  sts TCNT0, temp
 
   ;Modus aktivieren
   ldi temp , (1<< WGM01) | (0 << WGM00)
@@ -21,11 +25,13 @@ sendInit:
 sendStart:
   push temp
 
+
+
   ldi temp , 128
   sts OCR0A, temp
 
   ;Interrupts aktivieren
-  ldi temp, (1<<OCIE0A) | (1 << TOIE0)
+  ldi temp, (0<<OCIE0A) | (1 << TOIE0)
   sts TIMSK0, temp
 
   ldi temp , (1 << CS02) | (0 << CS01) | (1 << CS00)
@@ -34,10 +40,13 @@ sendStart:
   pop temp
   ret
 
+getTCNT0:
+  lds p1L, TCNT0
+  ldi p1H, 0
+  ret
+
 sendIRQCompare:
-  rjmp sendIRQCompare
   reti
 
 sendIRQOverflow:
-  rjmp sendIRQOverflow
   reti

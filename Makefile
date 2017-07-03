@@ -10,7 +10,7 @@ MCU = atmega328p
 
 CONF = config/avrdude.conf
 
-PORT = /dev/ttyACM0
+PORT = /dev/ttyUSB0
 
 MAP = output.map
 
@@ -52,7 +52,7 @@ $(BUILD):
 	mkdir $@
 
 install:
-	avrdude -C $(CONF) -v -p $(MCU) -carduino -P $(PORT) -b115200 -D -Uflash:w:$(TARGET):i
+	avrdude -C $(CONF) -v -p $(MCU) -carduino -P $(PORT) -b57600 -D -Uflash:w:$(TARGET):i
 
 
 clean :
